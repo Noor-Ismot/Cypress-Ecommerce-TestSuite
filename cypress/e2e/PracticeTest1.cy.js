@@ -5,5 +5,4 @@ it('Visit Shein Website', () => {
   //cy.get('.search-btn > .suiiconfont-critical').click()
   cy.contains('Beige').click()
   cy.wait(2000)
-  //cy.get('').should(contain,'')
 })
