@@ -6,6 +6,5 @@ describe('Foodora Test Automation spec', () => {
     cy.get('.search-input-container').type('Kilbäcksgatan 20B, 451 30 Uddevalla')
     cy.wait(4000)
     cy.get('.search-input-container').should('contains', 'Kilbäcksgatan 20B, 451 30 Uddevalla')
-
   })
 })
