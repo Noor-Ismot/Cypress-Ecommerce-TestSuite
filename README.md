@@ -3,6 +3,9 @@ This project contains automated tests for an e-commerce website using Cypress.
 
 Project URL: https://www.bstackdemo.com/
 
+## AutomationDemo
+![User Login and Logout Automation Demo](cypress/downloads/CypressAutomationEcommerce.gif)
+
 ## Installation
 1. Clone the repository.
 2. Install Node.js if not already installed.
