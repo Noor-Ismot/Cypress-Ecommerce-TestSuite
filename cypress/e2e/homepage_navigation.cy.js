@@ -1,36 +1,42 @@
-describe('User Login & Logout', () => {
-  context('Positiove Cases', () => {
-    beforeEach(() => {
-      cy.visit('/')
-      cy.wait(1000)
+describe('Homepage Navigation', () => {
+  beforeEach(() => {
+    // Visit the homepage before each test
+    cy.visit('/')
+  });
+  context('Positive Cases', () => {
+
+    it('Should load the homepage successfully', () => {
+
+      // Verify that the correct URL is loaded
+      cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
 
-    it('Should allow a registered user to login and logout successfully', () => {
+    it('Should redirect to login page when user clicks on offer, order, or favorite nav items', () => {
 
-      // Test steps to login with valid credentials
-      cy.get('#signin').click()
-      cy.get('#username > .css-yk16xz-control > .css-1hwfws3').type('demouser{enter}')
-      cy.wait(1000)
-      cy.get('#password > .css-yk16xz-control > .css-1hwfws3')
-        .click()
-        .type('testingisfun99{enter}')
-      cy.wait(1000)
-      cy.get('#login-btn').click()
+      // Click on the Offer link
+      cy.get('nav').contains('Offers').click()
 
-      // Assertions to verify successful login
-      cy.url().should('include', '/?signin=true')
-      cy.get('.username').should('have.text', 'demouser')
-      cy.get('#logout').should('be.visible')
-      cy.wait(1000)
+      // Verify that the URL changes to the login page
+      cy.url().should('include', '/signin?offers=true')
 
-      // Test steps to logout
-      cy.get('#logout').click()
+      // Navigate back to the homepage
+      cy.go('back');
 
-      // Assertions to verify successful logout
-      cy.url().should('eq', 'https://www.bstackdemo.com/')
-      cy.get('#signin').should('have.text', 'Sign In')
-      cy.wait(1000)
+      // Click on the Order link
+      cy.get('nav').contains('Orders').click()
 
+      // Verify that the URL changes to the login page
+      cy.url().should('include', '/signin?orders=true')
+
+      // Navigate back to the homepage
+      cy.go('back')
+
+      // Click on the Favorite link
+      cy.get('nav').contains('Favourites').click()
+
+      // Verify that the URL changes to the login page
+      cy.url().should('include', '/signin?favourites=true')
+      cy.go('back')
     })
   })
 })

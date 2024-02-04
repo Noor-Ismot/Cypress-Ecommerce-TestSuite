@@ -1,7 +1,6 @@
 # Cypress Automation Project
-
-## Description
 This project contains automated tests for an e-commerce website using Cypress.
+
 Project URL: https://www.bstackdemo.com/
 
 ## Installation
