@@ -3,13 +3,23 @@ describe('Product Sort', () => {
         // Visit the homepage before each test
         cy.visit('/')
     });
-    context('Product add to cart', () => {
+    context('Product Mark as Favorite', () => {
 
-        // Test case for filter products by selected brand tag (Apple)
-        it('Should add products into cart according to selection', () => {
+        //Test Case to log into website to mark product
+        it('Should mark as favorite products', () => {
+            cy.get('#signin').click()
+            cy.get('#username > .css-yk16xz-control > .css-1hwfws3').type('demouser{enter}')
+            cy.get('#password > .css-yk16xz-control > .css-1hwfws3')
+                .click()
+                .type('testingisfun99{enter}')
+            cy.get('#login-btn').click()
 
+            // Test case to mark product as favorite
+            cy.get('.shelf-stopper').click({ force: true })
 
-            // Assertions to verify selected products are added to cart
+            // Assertions to verify selected products are marked
+            cy.visit('https://www.bstackdemo.com/favourites')
+            cy.get('.products-found > span').should('contain', '8 Product(s) found.')
 
 
         })
