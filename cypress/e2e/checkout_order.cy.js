@@ -5,11 +5,18 @@ describe('Product Sort', () => {
     });
     context('Product add to cart', () => {
 
-        // Test case for filter products by selected brand tag (Apple)
+        // Test case to add product into cart
         it('Should add products into cart according to selection', () => {
-
+            cy.contains('Add to cart').click()
+            cy.contains('Add to cart').click()
 
             // Assertions to verify selected products are added to cart
+            cy.get('.shelf-item__details > .title').should('contain', 'iPhone')
+            cy.get('.desc')
+                .should('contain', 'Apple')
+                .should('contain', 'Quantity: 2')
+
+            // Assertions to verify checkout
 
 
         })
