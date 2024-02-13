@@ -10,7 +10,6 @@ Project URL: https://www.bstackdemo.com/
 - Product Filter
 - Product Add to cart
 - Remove Product from Cart
-- Mark Product as favorite
 - Checkout Order
 
 ## AutomationDemo : User Login & Logout Module
