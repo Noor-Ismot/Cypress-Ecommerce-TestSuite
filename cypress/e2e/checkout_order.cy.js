@@ -3,7 +3,7 @@ describe('Product Sort', () => {
         // Visit the homepage before each test
         cy.visit('/')
     });
-    context('Product add to cart', () => {
+    context('Product checkout after User authentication', () => {
         it('Should add products into cart and checkout after authentication', () => {
 
             // Test case to add product into cart
@@ -40,6 +40,16 @@ describe('Product Sort', () => {
             // Assertions to verify checkout successful
             cy.url().should('eq', 'https://www.bstackdemo.com/confirmation')
             cy.get('.checkout-steps').should('contain', 'Your Order has been successfully placed')
+
+            //Test Cases to View orders
+            cy.get('.checkoutHeader-link').click()
+            cy.get('#orders').click()
+
+            //Assertions to view Oder 
+            cy.url().should('eq', 'https://www.bstackdemo.com/orders')
+            cy.get('.a-color-offset-background > .a-box-inner')
+                .should('contain', 'Order placed')
+                .should('not.contain', 'No orders found')
 
         })
     })
