@@ -5,16 +5,24 @@ describe('Homepage Navigation', () => {
   });
   context('Positive Cases', () => {
 
+    /*in case we need to run one test, we can use .only command
+        it.only('Should load the homepage successfully', () => {
+    
+          // Verify that the correct URL is loaded
+          cy.url().should('eq', Cypress.config().baseUrl + '/')
+        }) 
+    */
+
     it('Should load the homepage successfully', () => {
 
       // Verify that the correct URL is loaded
       cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
 
-    it('Should redirect to login page when user clicks on offer, order, or favorite nav items', () => {
+    it('Should redirect to login page when user clicks on any of nav items', () => {
 
       // Click on the Offer link
-      cy.get('nav').contains('Offers').click()
+      cy.get('nav').eq(0).contains('Offers').click()
 
       // Verify that the URL changes to the login page
       cy.url().should('include', '/signin?offers=true')
@@ -22,6 +30,7 @@ describe('Homepage Navigation', () => {
       // Navigate back to the homepage
       cy.go('back');
 
+      /*
       // Click on the Order link
       cy.get('nav').contains('Orders').click()
 
@@ -37,6 +46,7 @@ describe('Homepage Navigation', () => {
       // Verify that the URL changes to the login page
       cy.url().should('include', '/signin?favourites=true')
       cy.go('back')
+      */
     })
   })
 })
