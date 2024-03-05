@@ -23,8 +23,11 @@ describe('User Login & Logout', () => {
             // Test steps to logout
             cy.get('#logout').click()
 
-            // Assertions to verify successful logout
-            cy.url().should('eq', 'https://www.bstackdemo.com/')
+            // Assertions using location command to verify successful logout
+            cy.location('pathname').should('eq', '/')
+
+            //cy.url().should('eq', 'https://www.bstackdemo.com/')
+
             cy.get('#signin').should('have.text', 'Sign In')
 
         })
