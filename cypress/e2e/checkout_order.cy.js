@@ -39,7 +39,9 @@ describe('Product Sort', () => {
 
             // Assertions to verify checkout successful
             cy.url().should('eq', 'https://www.bstackdemo.com/confirmation')
-            cy.get('.checkout-steps').should('contain', 'Your Order has been successfully placed')
+
+            //Custom command to verify the success message
+            cy.getByData('shipping-address-heading').should('exist').contains('Your Order has been successfully placed')
 
             //Test Cases to View orders
             cy.get('.checkoutHeader-link').click()
